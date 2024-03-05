@@ -1,14 +1,30 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Sorts an array of integers in ascending order using the
- *               bubble sort algorithm.
- * @array: Pointer to the array to be sorted
- * @size: Number of elements in the array (size_t is an unsigned integer type)
+ * swap_int - Swap two integers in an array.
+ * @x: 1st integer to swap.
+ * @y: 2nd integer to swap.
+ */
+void swap_int(int *x, int *y)
+{
+	int tmp = *x;
+	*x = *y;
+	*y = tmp;
+}
+
+/**
+ * bubble_sort - Sort an array of integers in ascending order.
+ * @array: An array of integers to sort.
+ * @size: The size of the array.
+ *
+ * Description: Prints the array after each swap.
  */
 void bubble_sort(int *array, size_t size)
 {
 	size_t i, j;
+
+	if (array == NULL || size < 2)
+		return;
 
 	for (i = 0; i < size - 1; i++)
 	{
@@ -16,29 +32,9 @@ void bubble_sort(int *array, size_t size)
 		{
 			if (array[j] > array[j + 1])
 			{
-				int temp = array[j];
-
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
+				swap_int(&array[j], &array[j + 1]);
 			}
 		}
+		print_array(array, size);
 	}
-}
-
-/**
- * print_array - Prints an array of integers
- * @array: Pointer to the array to be printed
- * @size: Number of elements in the array (size_t is an unsigned integer type)
- */
-void print_array(const int *array, size_t size)
-{
-	size_t i;
-
-	for (i = 0; i < size; i++)
-	{
-		printf("%d", array[i]);
-		if (i < size - 1)
-			printf(", ");
-	}
-	printf("\n");
 }
