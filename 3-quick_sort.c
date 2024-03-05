@@ -12,7 +12,7 @@ void quick_sort(int *array, size_t size);
  */
 void swap_ints(int *x, int *y)
 {
-	int tmp;
+	int temp;
 
 	temp = *x;
 	*x = *y;
